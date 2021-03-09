@@ -1,0 +1,71 @@
+#include <ESP8266WiFi.h>
+#include <ESP8266WebServer.h>
+#include <Wire.h>
+#include <Adafruit_MLX90614.h>
+ 
+Adafruit_MLX90614 mlx = Adafruit_MLX90614();
+WiFiServer server(80);
+ 
+const char* ssid = "TAEHO"; 
+const char* pass = "rlawhdvkf";  //와이파이 접속하기 위한 아이디 비밀번호
+ 
+void setup(void){
+  Serial.begin(115200);
+  Serial.println("");
+  
+  WiFi.begin(ssid, pass); // 와이파이 접속 시작
+ 
+ 
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(100);
+    Serial.print(".");
+  }
+ 
+   // Start the server
+  server.begin();
+ 
+  
+  // Print the IP address
+  Serial.print("Use this URL to connect: ");
+  Serial.print("http://");
+  Serial.print(WiFi.localIP());
+  Serial.println("/"); //와이파이 local ip 주소 할당
+ 
+ 
+  
+ mlx.begin();
+   
+ 
+}
+ 
+void loop() {
+ 
+  WiFiClient client = server.available();
+  if (!client) {
+    return;
+  }
+ 
+  // Wait until the client sends some data
+  Serial.println("new client");
+  while(!client.available()){
+    delay(1); //client 할당
+  }
+ 
+  // Read the first line of the request
+  String request = client.readStringUntil('\r');
+  Serial.println(request);
+  client.flush();
+ 
+  // Return the response
+  client.println("HTTP/1.1 200 OK");
+  client.println("Content-Type: text/html");
+  client.println(""); //  do not forget this one
+  client.println("<!DOCTYPE HTML>");
+  client.println("<html>");
+  client.println("<meta http-equiv=\"refresh\" content=\"1\"> ");
+  client.println("<h1>"); 
+  client.println(mlx.readObjectTempC()); 
+   client.println("</h1>"); 
+  client.println("</html>"); //계속 리프레쉬 되는 온도센서 값 표출
+ 
+}

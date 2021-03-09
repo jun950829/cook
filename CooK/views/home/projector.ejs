@@ -1,0 +1,63 @@
+	<!--  안쓰는 파일 -->
+	
+	
+	<html>
+
+<head>
+
+<script>
+
+	var time = 40;
+	var min = "";
+	var sec ="";
+
+//	const fs = require('fs');
+//	const dir = './images';
+
+	
+	var x = setInterval(function(){
+		
+	//	fs.readdir(dir, (err, files) => {
+			
+		//	console.log(files);
+	//});
+		//if(1) {
+			min = parseInt(time/60);
+			sec = time%60;
+		
+			//document.getElementById("demo").innerHTML += min + "遺�" + sec +"珥�"+ "" + "<br>";;
+			var temp = document.getElementById('abcd');
+			console.log(temp);
+			temp.src = "/images/Clientfile" + (time) + ".png";
+			console.log("/images" + time + ".jpg");
+			time++;
+			if(time <0){
+			clearInterval(x);
+			document.getElementById("demo").innerHTML += "�걹" ;
+		
+			}
+		//}
+
+	}, 1000);
+	
+	
+</script>
+<body>
+	<div id ="demo">
+	<img class="abcd" name="abcd" id='abcd' src="/images/img.jpg" width="500" height="500" style = "display: block; margin: 200px auto;">
+	<h1><%= --condition %></h1>
+	
+
+</div>
+	
+<div>
+
+	
+	<img  src="/images/Clientfile241.png" width= "500" height="500">
+	
+	</div>
+
+</body>
+</html>
+	
+

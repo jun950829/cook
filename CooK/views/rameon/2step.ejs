@@ -1,0 +1,61 @@
+<!-- views/rameon/2step.ejs -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head') %>
+
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+    
+    
+        
+	 <div class="container mb-3">
+
+      <h2 class="mb-3">Cook</h2>  
+            
+     </div>
+     <div class="container">
+     <div class="row">
+     <div class="col-md-8">
+     <img src = "/images/rameon_Step2.gif" width = 700px height = 400px>
+
+	</div>
+    
+   <div class="col-md-4">
+   
+    	<ul class="list-group">
+    		<li class="list-group-item"><a href="/rameon">1step</a></li>
+  	  		<li class="list-group-item"><a href="/rameon/2step">2step</a></li>
+    		<li class="list-group-item"><a href="/rameon/3step">3step</a></li>
+    		<li class="list-group-item"><a href="/rameon/4step">4step</a></li>
+    </ul>
+    
+    <div> 
+<div>
+<font size = "6em" color = "green">
+Temperature!!
+</font>
+
+<!--   아두이노 서버에서 온도 표출되는것 가져오기  -->
+<iframe src="http://192.168.0.19" width = 150px height = 100px frameborder = 0 align = left>온도</iframe>  
+	</div>
+		
+	</div>
+    
+    
+    </div>
+      <div>
+       	<img src = "/images/rameon_second.jpg" width = 1200px height = 350px>
+   
+      
+      </div>
+      
+      
+    </div>
+    </div>
+    
+    
+  </body>
+</html>
