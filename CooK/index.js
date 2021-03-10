@@ -83,12 +83,12 @@ app.use('/rameon', require('./routes/rameon'));
 //    });
 //}
 //
-//// Port setting
-//var port = 3000;
-//app.listen(port, function(){
-//	
-//  console.log('server on! http://localhost:'+port);
-//});
+// Port setting
+var port = 3000;
+app.listen(port, function(){
+	
+  console.log('server on! http://localhost:'+port);
+});
 //
 //
 //var WebSocketServer = require('websocket').server;
